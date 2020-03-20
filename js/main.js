@@ -1,6 +1,7 @@
 let inputText = document.getElementById("textInput");
 let addBtn = document.getElementById("addBtn");
 let passValue = "";
+let inputSave1 = document.createElement("input");
 addBtn.addEventListener("click", function (e) {
     e.preventDefault();
     if (isNotValidText(inputText.value)) {
@@ -20,28 +21,14 @@ addBtn.addEventListener("click", function (e) {
 
         inputSave.disabled = true;
 
+        inputSave1 = inputSave;
+
         //Create Edit Button
         let editBtn = document.createElement("button");
         editBtn.className = "editBtn";
         editBtn.textContent = "Edit";
 
         editBtn.addEventListener("click", editItem);
-
-        function editItem(e) {
-            e.preventDefault();
-            if (inputSave.disabled == true)
-                inputSave.disabled = false;
-            else
-
-            {
-                if (isNotValidText(inputSave.value))
-                    alert("Please Enter Some Text");
-                else
-                    inputSave.disabled = true;
-            }
-
-        }
-
 
         //Create Done Button
         let doneBtn = document.createElement("button");
@@ -98,32 +85,17 @@ function addToDone(z) {
     let inputSave = document.createElement("input");
     inputSave.className = "save-input";
     inputSave.value = passValue;
-
     inputSave.disabled = true;
+
+    inputSave1 = inputSave;
+
 
     //Create Edit Button
     let editBtn = document.createElement("button");
     editBtn.className = "editBtn";
     editBtn.textContent = "Edit";
 
-
-
     editBtn.addEventListener("click", editItem);
-
-    function editItem(e) {
-        e.preventDefault();
-        if (inputSave.disabled == true)
-            inputSave.disabled = false;
-        else {
-            if (isNotValidText(inputSave.value))
-                alert("Please Enter Some Text");
-            else
-                inputSave.disabled = true;
-        }
-
-    }
-
-
 
 
     //Create Remove Button
@@ -140,5 +112,20 @@ function addToDone(z) {
     //append list elements in ul in Save-task
     document.getElementById("done-task").appendChild(li);
     //
+
+}
+
+function editItem(e) {
+    e.preventDefault();
+    if (inputSave1.disabled == true)
+        inputSave1.disabled = false;
+    else
+
+    {
+        if (isNotValidText(inputSave1.value))
+            alert("Please Enter Some Text");
+        else
+            inputSave1.disabled = true;
+    }
 
 }
