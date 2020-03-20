@@ -99,10 +99,34 @@ function addToDone(z) {
     inputSave.className = "save-input";
     inputSave.value = passValue;
 
+    inputSave.disabled = true;
+
     //Create Edit Button
     let editBtn = document.createElement("button");
     editBtn.className = "editBtn";
     editBtn.textContent = "Edit";
+
+
+
+    editBtn.addEventListener("click", editItem);
+
+    function editItem(e) {
+        e.preventDefault();
+        if (inputSave.disabled == true)
+            inputSave.disabled = false;
+        else
+
+        {
+            if (isNotValidText(inputSave.value))
+                alert("Please Enter Some Text");
+            else
+                inputSave.disabled = true;
+        }
+
+    }
+
+
+
 
     //Create Remove Button
     let removeBtn = document.createElement("button");
