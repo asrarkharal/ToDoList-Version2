@@ -114,9 +114,7 @@ function addToDone(z) {
         e.preventDefault();
         if (inputSave.disabled == true)
             inputSave.disabled = false;
-        else
-
-        {
+        else {
             if (isNotValidText(inputSave.value))
                 alert("Please Enter Some Text");
             else
